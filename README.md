@@ -1,8 +1,13 @@
-# The Alphabet Cipher
+# The alphabet cipher
 
+The repository contains one dojo time of solutions for [The Alphabet Cipher](https://en.wikipedia.org/wiki/The_Alphabet_Cipher)
 
-Lewis Carroll published "The Alphabet-Cipher" in 1868, possibly in a children's magazine. It describes what is known as a Vigenère cipher, a well-known scheme in cryptography. While Carroll calls this cipher "unbreakable", Kasiski had published a volume describing how to break such ciphers from five years earlier, and Charles Babbage had secretly found ways to break polyalphabetic ciphers during the Crimean War.
+## List of solutions
 
-# More info here:
+* [OCaml](https://github.com/lambda-dojo-sofia/alphabet-cipher/tree/master/ocaml)
+* [Clojure](https://github.com/lambda-dojo-sofia/alphabet-cipher/tree/master/clojure-cipher)
 
-https://en.wikipedia.org/wiki/The_Alphabet_Cipher
+## License
+
+Copyright © 2018
+Distributed under the MIT License
