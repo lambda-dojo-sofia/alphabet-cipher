@@ -28,11 +28,8 @@
    \y "yzabcdefghijklmnopqrstuvwx"
    \z "zabcdefghijklmnopqrstuvwxy"})
 
-(defn char->idx [c]
-  (- (int c) (int \a)))
-
 (defn cipher [x y]
-  (let [idx (char->idx y)
+  (let [idx (- (int y) (int \a))
         row (get dict x)]
     (nth row idx)))
 
