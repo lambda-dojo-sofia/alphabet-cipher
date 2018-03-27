@@ -40,9 +40,9 @@
   (get "abcdefghijklmnopqrstuvwxyz" (clojure.string/index-of (get dict y) x)))
 
 (defn translate [fun message key-word]
-  (apply str (map #(fun (Character/toLowerCase %1) (Character/toLowerCase %2))
-                  (remove #(Character/isWhitespace %) message)
-                  (cycle key-word))))
+  (map #(fun (Character/toLowerCase %1) (Character/toLowerCase %2))
+       (remove #(Character/isWhitespace %) message)
+       (cycle key-word)))
 
 (defn encode [message key-word]
   (translate cipher message key-word))
@@ -52,7 +52,8 @@
 
 (defn -main [action message key-word]
   (println
-   (cond
-     (= action "encode") (encode message key-word)
-     (= action "decode") (decode message key-word)
-     :else "Invalid usage")))
+   (apply str
+          (cond
+             (= action "encode") (encode message key-word)
+             (= action "decode") (decode message key-word)
+             :else "Invalid usage"))))

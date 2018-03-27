@@ -9,4 +9,4 @@
   (prop/for-all [message (gen/list-distinct gen/char-alpha {:min-elements 2})
                  secret (gen/list-distinct gen/char-alpha {:min-elements 2})]
                 (= (decode (encode message secret) secret)
-                   (apply str (map #(Character/toLowerCase %1) message)))))
+                   (map #(Character/toLowerCase %1) message))))
