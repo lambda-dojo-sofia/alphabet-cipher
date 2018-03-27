@@ -1,14 +1,23 @@
-let keyword = "vigilance" ;;
-let plaintext = "meetmeontuesdayeveningatseven" ;;
+let keyword = "vigilance"
+let plaintext = "meetmeontuesdayeveningatseven"
+let encrypted = "hmkbxebpxpmyllyrxiiqtoltfgzzv"
 
-let findChar keyword i = keyword.[i mod String.length keyword] ;;
+let findChar keyword i = keyword.[i mod String.length keyword]
 
 let intToLetter i = Char.chr (i + Char.code 'a')
 let letterToInt l = Char.code l - Char.code 'a'
-let shiftChar a b = intToLetter ((letterToInt a) + (letterToInt b)) mod 26
+let wrapAround n = match n with
+  | _ when n < 0 -> (n + 26)
+  | _ -> n mod 26
 
-let shift keyword i c = shiftChar (findChar keyword i) c ;;
+let shiftChar direction a b = intToLetter (wrapAround ((letterToInt a) * direction + (letterToInt b)))
 
-let encrypt keyword plaintext = String.mapi (shift keyword) plaintext ;;
+let shift direction keyword i c = shiftChar direction (findChar keyword i) c
 
-let () = print_endline (encrypt keyword plaintext) ;;
+let cryptomagic fn keyword plaintext = String.mapi (fn keyword) plaintext
+
+let encrypt = cryptomagic (shift 1)
+let decrypt = cryptomagic (shift (-1))
+
+let () = print_endline (encrypt keyword plaintext)
+let () = print_endline (decrypt keyword encrypted)
