@@ -1,6 +1,5 @@
 (ns clojure-cipher.core-test
-  (:require [clojure.test :refer :all]
-            [clojure-cipher.core :refer [encode decode]]
+  (:require [clojure-cipher.core :refer [encode decode]]
             [clojure.test.check.clojure-test :refer [defspec]]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]))
