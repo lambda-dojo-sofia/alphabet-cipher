@@ -7,6 +7,6 @@
 
 (defspec encode-decode 10000
   (prop/for-all [message (gen/list-distinct gen/char-alpha {:min-elements 2})
-                 secret (gen/list-distinct gen/char-alpha {:min-elements 2})]
-                (= (decode (encode message secret) secret)
+                 secret! (gen/list-distinct gen/char-alpha {:min-elements 2})]
+                (= (decode (encode message secret!) secret!)
                    (map #(Character/toLowerCase %1) message))))
