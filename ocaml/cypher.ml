@@ -1,8 +1,8 @@
 let findChar keyword i = keyword.[i mod String.length keyword]
 
 let wrapAround n = match n with
-  | _ when n < 0 -> (n + 26)
-  | _ -> n mod 26
+    | _ when n < 0 -> (n + 26)
+    | _ -> n mod 26
 
 let intToLetter i = Char.chr ((wrapAround i) + Char.code 'a')
 let letterToInt l = Char.code l - Char.code 'a'
