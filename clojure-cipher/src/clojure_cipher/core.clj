@@ -29,18 +29,20 @@
    \z "zabcdefghijklmnopqrstuvwxy"})
 
 (defn char->idx [c]
-  (- (int (Character/toLowerCase c)) (int \a)))
+  (- (int c) (int \a)))
 
 (defn cipher [x y]
   (let [idx (char->idx y)
-        row (get dict (Character/toLowerCase x))]
+        row (get dict x)]
     (nth row idx)))
 
 (defn decipher [x y]
   (get "abcdefghijklmnopqrstuvwxyz" (clojure.string/index-of (get dict y) x)))
 
 (defn translate [fun message key-word]
-  (apply str (map fun (remove #(Character/isWhitespace %) message) (cycle key-word))))
+  (apply str (map #(fun (Character/toLowerCase %1) (Character/toLowerCase %2))
+                  (remove #(Character/isWhitespace %) message)
+                  (cycle key-word))))
 
 (defn encode [message key-word]
   (translate cipher message key-word))
