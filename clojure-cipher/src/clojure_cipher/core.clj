@@ -50,12 +50,6 @@
 (defn decode [message key-word]
   (translate decipher message key-word))
 
-;; (decode "h" "v") ;; => m
-
-;; (encode "Meetmeontuesdayeveningatseven" "vigilance")
-
-;; (decode (encode "meetmeontuesdayeveningatseven" "vigilance") "vigilance")
-
 (defn -main [action message key-word]
   (println
    (cond
