@@ -19,5 +19,16 @@ let cryptomagic fn keyword plaintext = String.mapi (fn keyword) plaintext
 let encrypt = cryptomagic (shift 1)
 let decrypt = cryptomagic (shift (-1))
 
-let () = print_endline (encrypt keyword plaintext)
-let () = print_endline (decrypt keyword encrypted)
+let prompt message =
+    print_string message;
+    read_line ()
+
+let getMode = match (prompt "Mode? [e|d] ") with
+    | "e" -> encrypt
+    | _ -> decrypt
+
+let () =
+    let fn = getMode in
+    let keyword = prompt "Keyword? " in
+    let plaintext = prompt "Plain text? " in
+    print_endline (fn keyword plaintext)
