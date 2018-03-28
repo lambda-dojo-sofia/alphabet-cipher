@@ -6,6 +6,7 @@ The repository contains one dojo time of solutions for [The Alphabet Cipher](htt
 
 * [OCaml](https://github.com/lambda-dojo-sofia/alphabet-cipher/tree/master/ocaml)
 * [Clojure](https://github.com/lambda-dojo-sofia/alphabet-cipher/tree/master/clojure-cipher)
+* [Golang](https://github.com/lambda-dojo-sofia/alphabet-cipher/tree/master/golang)
 
 ## License
 
