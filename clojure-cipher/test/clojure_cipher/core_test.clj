@@ -1,11 +1,11 @@
 (ns clojure-cipher.core-test
-  (:require [clojure-cipher.core :refer [encode decode]]
+  (:require [clojure-cipher.core :refer [encode decode lowercase]]
             [clojure.test.check.clojure-test :refer [defspec]]
-            [clojure.test.check.generators :as gen]
-            [clojure.test.check.properties :as prop]))
+            [clojure.test.check.generators :refer [char-alpha list-distinct]]
+            [clojure.test.check.properties :refer [for-all]]))
 
-(defspec encode-decode 10000
-  (prop/for-all [message (gen/list-distinct gen/char-alpha {:min-elements 2})
-                 secret! (gen/list-distinct gen/char-alpha {:min-elements 2})]
-                (= (decode (encode message secret!) secret!)
-                   (map #(Character/toLowerCase %1) message))))
+(defspec encode-decode 1000
+  (for-all [message (list-distinct char-alpha {:min-elements 2})
+            secret! (list-distinct char-alpha {:min-elements 2})]
+           (= (decode (encode message secret!) secret!)
+              (map lowercase message))))

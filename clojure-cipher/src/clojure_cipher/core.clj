@@ -1,5 +1,11 @@
 (ns clojure-cipher.core)
 
+(defn lowercase [c]
+  (Character/toLowerCase c))
+
+(defn whitespace [c]
+  (Character/isWhitespace c))
+
 (def dict {
    \a "abcdefghijklmnopqrstuvwxyz"
    \b "bcdefghijklmnopqrstuvwxyza"
@@ -37,8 +43,8 @@
   (get "abcdefghijklmnopqrstuvwxyz" (clojure.string/index-of (get dict y) x)))
 
 (defn translate [fun message key-word]
-  (map #(fun (Character/toLowerCase %1) (Character/toLowerCase %2))
-       (remove #(Character/isWhitespace %) message)
+  (map #(fun (lowercase %1) (lowercase %2))
+       (remove whitespace message)
        (cycle key-word)))
 
 (defn encode [message key-word]
