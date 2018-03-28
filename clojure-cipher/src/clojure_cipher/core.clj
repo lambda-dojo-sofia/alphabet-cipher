@@ -42,8 +42,8 @@
 (defn decipher [x y]
   (get "abcdefghijklmnopqrstuvwxyz" (clojure.string/index-of (get dict y) x)))
 
-(defn translate [fun message key-word]
-  (map #(fun (lowercase %1) (lowercase %2))
+(defn translate [func message key-word]
+  (map #(func (lowercase %1) (lowercase %2))
        (remove whitespace message)
        (cycle key-word)))
 
